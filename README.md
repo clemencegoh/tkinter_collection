@@ -26,7 +26,7 @@ A common directory location for a virtual environment is `.venv`. This name keep
 
 Once you’ve created a virtual environment, you may activate it.
 
-On Windows, run:
+On Windows, run: (do this in cmd rather than powershell)
 
 ```
 .\.venv\Scripts\activate.bat
