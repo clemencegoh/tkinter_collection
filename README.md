@@ -6,3 +6,8 @@ Collection of simple gui parts using tkinter - might come in handy for building 
 
 - use `pip freeze > requirements.txt` in order to freeze current state of imports into requirements.txt
 - otherwise, use `pip freeze >> requirements.txt` to append to existing requirements.txt file
+
+## Create new virtual env
+
+- run `virtualenv <folder>`
+- activate: `. <folder>/bin/activate`
