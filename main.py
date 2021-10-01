@@ -1,9 +1,4 @@
 import tkinter as tk
-from tkinter.constants import COMMAND
-
-
-def test_frame(frame: tk.Tk):
-    someLabel = tk.Label(frame, text="Hello world label")
 
 
 class ScreenController:
@@ -29,37 +24,29 @@ class ScreenController:
         test_frame(self.root)
 
 
-def gui(window: tk.Tk):
-    greeting = tk.Label(
-        text="hello world",
-        foreground="white",
-        background="black",
-        height=10,
-        width=10,
-    )
+def text_field_component(parent: tk.Frame, label: str, isPassword: bool):
+    field_wrapper = tk.Frame(master=parent)
+    field_wrapper.pack()
 
-    def get_input():
-        userInput = formEntry.get()
-        print(userInput)
+    field_label = tk.Label(master=field_wrapper, text=label)
+    field_entry = tk.Entry(master=field_wrapper)
 
-    formLabel = tk.Label(
-        text="name",
-    )
-    formEntry = tk.Entry()
-    formEntry.insert(0, "placeholder text")
+    if isPassword:
+        field_entry = tk.Entry(master=field_wrapper, show="*")
 
-    button = tk.Button(
-        text="Click me!",
-        width=25,
-        height=5,
-        bg="blue",
-        fg="yellow",
-        command=get_input,
-    )
+    field_label.pack(fill=tk.X, side=tk.LEFT, expand=True)
+    field_entry.pack(fill=tk.X, side=tk.LEFT, expand=True)
 
-    formLabel.pack()
-    formEntry.pack()
-    button.pack()
+
+def basic_form(master: tk.Frame):
+    # build overall wrapper
+    overall_wrapper = tk.Frame(master=master, height=300, width=50)
+    overall_wrapper.pack()
+
+    text_field_component(overall_wrapper, "username: ", False)
+    text_field_component(overall_wrapper, "password: ", True)
+    submit_button = tk.Button(master=overall_wrapper, text="Submit")
+    submit_button.pack()
 
 
 if __name__ == "__main__":
@@ -68,6 +55,7 @@ if __name__ == "__main__":
     window.title("Tkinter components")
     window.geometry("1200x600")  # todo: remove this
     # controller = ScreenController(root)
-    gui(window=window)
+    # gui()
+    basic_form(window)
 
     window.mainloop()
